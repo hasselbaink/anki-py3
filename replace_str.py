@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# this code don't work, but it will be use in future versions
 line = ''
 words = []
 output = []
