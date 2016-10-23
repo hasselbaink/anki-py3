@@ -1,4 +1,4 @@
-#!/usr/bin/env/ python3
+#!/usr/bin/env python3
 def start(path='words.txt'):
 	import card
 	cards = []
@@ -18,7 +18,7 @@ def start(path='words.txt'):
 			if (inp+'\n') == word.get_word2():
 				points+=1
 				if (points % 10) == 0:
-					print('!!!Fine, you\'ve earned '+points+'!!!')
+					print('!!!Fine, you\'ve earned '+str(points)+'!!!')
 				break
 
 import sys
