@@ -14,12 +14,12 @@ def start(path='words.txt'):
 	with open('words.txt', mode='w') as f:
 		for w in output:
 			f.write(w)
-import sys
-args = sys.argv
-if len(args) == 1:
-	start()
-elif len(args) == 2:
-	if args[1] == '-h' or args[1] == '--help':
-		pass
-	else:
-		start(path=args[1])
+#import sys
+#args = sys.argv
+#if len(args) == 1:
+#	start()
+#elif len(args) == 2:
+#	if args[1] == '-h' or args[1] == '--help':
+#		pass
+#	else:
+#		start(path=args[1])

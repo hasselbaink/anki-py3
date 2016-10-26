@@ -44,6 +44,9 @@ elif len(args) == 2:
 		print('Usage: ./anki.py [path to file]/[flag]')
 		print('Flags:\n\t-h\t-\tHelp\n\t--help')
 	elif args[1] == 'replace':
-		import replace_str
+		import replace_str; replace_str.start()
 	else:
 		start(path=args[1])
+elif len(args) == 3:
+	if args[1] == 'replace':
+		import replace_str; replace_str.start(path=args[2])
