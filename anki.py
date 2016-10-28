@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-def start(path='words.txt'):
+def start_game(path='words.txt'):
 	import card 		# Preparing
 	cards = []
 	line = ''
@@ -34,11 +34,25 @@ def start(path='words.txt'):
 					chances=3
 					print('True variant: '+word.get_word2())
 					break
+def create_file(path='words.txt'):
+	import os
+	if not os.path.exists(path):
+		with open(path, mode='w') as f:
+			f.write('')
+		inp = input('Are you want open file with \'nano\'?(y/n): ')
+		if inp is 'y' or inp is 'Y':
+			os.system('nano '+path)
+		else:
+			inp = input('Are you want open file with \'leafpad\'?(y/n): ')
+			if inp is 'y' or inp is 'Y':
+				os.system('leafpad '+path)
+			else:
+				pass
 
 import sys
 args = sys.argv
 if len(args) == 1:
-	start()
+	start_game()
 elif len(args) == 2:
 	if args[1] == '-h' or args[1] == '--help':
 		print('Usage: ./anki.py [path to file]/[flag]')
@@ -48,5 +62,7 @@ elif len(args) == 2:
 	else:
 		start(path=args[1])
 elif len(args) == 3:
-	if args[1] == 'replace':
+	if args[1] == 'create':
+		create_file(path=args[2])
+	elif args[1] == 'replace':
 		import replace_str; replace_str.start(path=args[2])
