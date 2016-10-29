@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import os
+import sys
 def start_game(path='words.txt'):
 	import card 		# Preparing
 	cards = []
@@ -35,7 +37,6 @@ def start_game(path='words.txt'):
 					print('True variant: '+word.get_word2())
 					break
 def create_file(path='words.txt'):
-	import os
 	if not os.path.exists(path):
 		with open(path, mode='w') as f:
 			f.write('')
@@ -49,7 +50,6 @@ def create_file(path='words.txt'):
 			else:
 				pass
 
-import sys
 args = sys.argv
 if len(args) == 1:
 	start_game()
