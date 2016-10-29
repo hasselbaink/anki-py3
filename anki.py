@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import sys
+import replace_str
 def start_game(path='words.txt'):
 	import card 		# Preparing
 	cards = []
@@ -21,7 +22,9 @@ def start_game(path='words.txt'):
 			if (inp+'\n') == word.get_word2():
 				points+=1
 				chances=3
-				if (points % 10) == 0:
+				if (points % 100) == 0:
+					print('!!!Fine, you\'ve earned '+str(points)+' points!!!')
+				elif (points % 10) == 0:
 					print('!!!Fine, you\'ve earned '+str(points)+'!!!')
 				break
 			elif inp is 'X':
@@ -52,7 +55,24 @@ def create_file(path='words.txt'):
 
 args = sys.argv
 if len(args) == 1:
-	start_game()
+	inp = input('What are you doing?(play|create|replace|change): ')
+	if inp == 'play':
+		start_game()
+	elif inp == 'create':
+		inp = input('File name(default: words.txt): ')
+		if not inp == '':
+			create_file(path=inp)
+		else:
+			create_file()
+	elif inp == 'replace':
+		inp = input('File name(default: words.txt): ')
+		if not inp == '':
+			replace_str.start(path=inp)
+		else:
+			replace_str.start()
+	elif inp == 'change':
+		pass
+		#inp = input('File name(default: words.txt): ')
 elif len(args) == 2:
 	if args[1] == '-h' or args[1] == '--help':
 		print('Usage: ./anki.py [path to file]/[flag]')
@@ -65,4 +85,4 @@ elif len(args) == 3:
 	if args[1] == 'create':
 		create_file(path=args[2])
 	elif args[1] == 'replace':
-		import replace_str; replace_str.start(path=args[2])
+		replace_str.start(path=args[2])
