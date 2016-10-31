@@ -50,29 +50,31 @@ def create_file(path='words.txt'):
 			inp = input('Are you want open file with \'leafpad\'?(y/n): ')
 			if inp is 'y' or inp is 'Y':
 				os.system('leafpad '+path)
-			else:
-				pass
 
 args = sys.argv
 if len(args) == 1:
+	filename_label = 'File name(default: words.txt): '
 	inp = input('What are you doing?(play|create|replace|change): ')
 	if inp == 'play':
 		start_game()
 	elif inp == 'create':
-		inp = input('File name(default: words.txt): ')
+		inp = input(filename_label)
 		if not inp == '':
 			create_file(path=inp)
 		else:
 			create_file()
 	elif inp == 'replace':
-		inp = input('File name(default: words.txt): ')
+		inp = input(filename_label)
 		if not inp == '':
 			replace_str.start(path=inp)
 		else:
 			replace_str.start()
 	elif inp == 'change':
-		pass
-		#inp = input('File name(default: words.txt): ')
+		inp = input(filename_label)
+		if not inp is '\n':
+			os.system('nano '+inp[:-1])
+		else:
+			os.system('nano words.txt')
 elif len(args) == 2:
 	if args[1] == '-h' or args[1] == '--help':
 		print('Usage: ./anki.py [path to file]/[flag]')
