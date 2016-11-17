@@ -6,3 +6,8 @@ class Card:
 		return self.word1;
 	def get_word2(self):
 		return self.word2;
+	def equals(self, word):
+		if self.word2 == word:
+			return True
+		else:
+			return False

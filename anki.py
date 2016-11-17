@@ -8,7 +8,7 @@ def start_game(path='words.txt'):
 	line = ''
 	with open(path, mode='r') as f:
 		for line in f:
-			words = line.split(':')
+			words = line.split('_')
 			cards.append(card.Card(words[0], words[1]))
 	from random import random
 	points = 0
@@ -19,7 +19,8 @@ def start_game(path='words.txt'):
 		while True:
 			print(word.get_word1())
 			inp = input('Is: ')
-			if (inp+'\n') == word.get_word2():
+			if word.equals(inp+'\n') == True:
+			#if (inp+'\n') == word.get_word2():
 				points+=1
 				chances=3
 				if (points % 100) == 0:
@@ -82,7 +83,7 @@ elif len(args) == 2:
 	elif args[1] == 'replace':
 		import replace_str; replace_str.start()
 	else:
-		start(path=args[1])
+		start_game(path=args[1])
 elif len(args) == 3:
 	if args[1] == 'create':
 		create_file(path=args[2])
