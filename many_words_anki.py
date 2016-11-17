@@ -11,37 +11,21 @@ def start_game(path='words.txt'):
 			words = line.split('_')
 			cards.append(card.Card(words[0], words[1]))
 	from random import random
-	points = 0
-	chances = 3
 	length = len(cards)
 	while True:		# Starting
 		word = cards[int(random() * length)]
 		while True:
 			print(word.get_word1())
 			inp = input('Is: ')
-			if word.equals(inp+'\n') == True:
-			#if (inp+'\n') == word.get_word2():
-				points+=1
-				chances=3
-				if (points % 100) == 0:
-					print('!!!Fine, you\'ve earned '+str(points)+' points!!!')
-				elif (points % 10) == 0:
-					print('!!!Fine, you\'ve earned '+str(points)+'!!!')
-				else:
-					print('+1 points All: '+str(points))
-				break
-			elif inp is 'X':
+			if inp is 'X':
 				sys.exit()
 			else:
-				if chances > 0:
-					points-=1
-					chances-=1
-					print('You are lose 1 point.')
-				else:
-					points-=1
-					chances=3
-					print('True variant: '+word.get_word2())
+				print('True variant: '+word.get_word2())
+				inp = input('Are you sure in your answer?(default: y):')
+				if inp is '' or inp is 'y':
 					break
+				else:
+					pass
 def create_file(path='words.txt'):
 	if not os.path.exists(path):
 		with open(path, mode='w') as f:
